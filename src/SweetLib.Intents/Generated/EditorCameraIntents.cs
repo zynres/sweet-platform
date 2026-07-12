@@ -10,7 +10,7 @@ namespace SweetLib.Intents.Generated;
 /// <summary>
 ///     this code was automatically generated from the .intents sourse file
 /// </summary>
-public unsafe class EditorCameraIntents : IDisposable
+public unsafe class EditorCameraIntents
 {
     public static ActionState* MoveState { get; private set; }
     public static ActionState* Sprint { get; private set; }
@@ -64,7 +64,7 @@ public unsafe class EditorCameraIntents : IDisposable
         Sprint->IsRelease = false;
     }
 
-    public void Dispose()
+    ~EditorCameraIntents()
     {
         if (MoveState != null)
         {
