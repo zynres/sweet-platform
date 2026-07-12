@@ -1,11 +1,10 @@
+using SweetLib.Intents;
 using System.Numerics;
 using Silk.NET.GLFW;
-using SweetLib.Intents;
-using SweetLib.Intents.Generated;
 
 namespace SweetLib.Devices;
 
-public unsafe struct MouseDevice
+public unsafe struct Mouse
 {
     public Vector2 Position;
     public Vector2 Delta;

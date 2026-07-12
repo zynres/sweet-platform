@@ -8,23 +8,25 @@ namespace SweetLib.Devices;
 
 public unsafe struct Device
 {
-    public WindowDevice Window;
-    public MouseDevice Mouse;
+    public Window Window;
+    public Mouse Mouse;
     public Time Time;
 
     private WindowHandle* window;
 
-    public void Init(WindowHandle* window, Glfw glfw)
+    public GraphicContext Init()
     {
-        this.window = window;
+        Window = new Window();
+        GraphicContext context = Window.Init(1060, 640);
 
-        Window = new WindowDevice();
-        Window.Init(glfw, window);
-
-        Mouse = new MouseDevice();
-        Mouse.Init(glfw, window, in Window.Size);
+        Mouse = new Mouse();
+        Mouse.Init(context.Glfw, context.Window, in Window.Size);
 
         Time = new Time();
+     
+        this.window = context.Window;
+
+        return context;
     }
 
     public void Update(Glfw glfw, in Intent intent)
